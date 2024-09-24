@@ -4,13 +4,16 @@ DAX: TOPN(), DISTINCT(), CALCULATE()
 
 
     MostExpensiveProduct =
-                          TOPN (
-                              1,
+                          CALCULATE (
                           
-                                DISTINCT ( Products[ProductName] ),
+                              SELECTEDVALUE (
+                          
+                                    (Products[ProductName] ),
                                 
-                                                            CALCULATE (
+                                                            TOPN (1,
     
-                                                                    Products[Unit Price]
+                                                                    Products,
+                                                                            
+                                                                            [Unit Price] DESC
                                                                                               )
                                                                                                   )
