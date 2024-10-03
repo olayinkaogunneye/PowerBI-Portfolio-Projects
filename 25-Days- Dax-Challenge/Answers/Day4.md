@@ -1,4 +1,6 @@
 CountProductAboveAvg =
+
+DAX: CALCULATE(), ALL(), COUNTROWS(), FILTER()
  
               
               
