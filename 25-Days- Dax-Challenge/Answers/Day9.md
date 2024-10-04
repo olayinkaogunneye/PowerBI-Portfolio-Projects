@@ -6,7 +6,7 @@ DAX: AVERAGEX(), VALUES(), CALCULATE()
 
             CALCULATE (
                       AVERAGEX (
-                                VALUES ( Orders [OrdersID], 
+                                VALUES (Orders[OrdersID]), 
                                                     
-                                                    [Total sales])
-                                                                  Customers[comnapyname] = "Romero y Tomillo"))
+                                                    [Total sales]),
+                                                                  Customers[companyName] = "Romero y Tomillo")
