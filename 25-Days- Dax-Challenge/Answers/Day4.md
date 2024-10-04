@@ -1,4 +1,4 @@
-CountProductAboveAvg =
+How many product are above the average unit price
 
 DAX: CALCULATE(), ALL(), COUNTROWS(), FILTER()
  
