@@ -1,4 +1,4 @@
-How many days since "North/South" last purchase?
+Day 10: How many days since "North/South" last purchase?
 
 DAX: CALCULATE(), LASTDATE(), DATEDIFF(), TODAY()
 
