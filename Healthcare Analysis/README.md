@@ -1,4 +1,7 @@
+## Hospital Inpatient Discharges - Total Hip Replacement (New York State)
 
+
+### Overview
 
 In healthcare, improving efficiency while maintaining high-quality patient care is a top priority.
 In this Power BI case study, which I completed through DataCamp, I explored a real-world dataset to uncover hospital efficiency insights for a fictional consulting company called HealthStat. 
