@@ -11,3 +11,6 @@ I analyzed attributes impacting the patient Length of Stay (LOS) and cost, and i
 To finish off, I brought it all together in a sophisticated business dashboard to communicate insights for the HealthStat team. This case study gave me a chance to practice a range of Power BI skills, working with real-world data provided by DataCamp.
 A special thank you to DataCamp for providing this practical and engaging case study experience, helping me enhance my Power BI and data analysis skills.
 
+Check out my Medium article below to see the full analysis and dashboard!
+
+https://shorturl.at/qXxXS.
