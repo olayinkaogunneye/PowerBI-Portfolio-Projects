@@ -40,8 +40,6 @@ Excel.Workbook(File.Contents("…PharmDataset-230517-152700.xlsx"), null, true)
 
 Each sheet is accessed via:n`Source{[Item="SheetName", Kind="Sheet"]}[Data]`
 
-`
----
 ### Extracted Table
 
 | Excel Sheet     | Power BI Table        |
