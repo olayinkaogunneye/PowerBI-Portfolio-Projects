@@ -1,0 +1,34 @@
+# Ignore legacy Power BI files
+*.pbix
+*.pbit
+
+# Ignore Power BI Desktop cache and local settings
+.pbi/
+.pbi_cache/
+.pbi/cache/**
+.pbi/localSettings.json
+
+# Ignore VS Code workspace settings
+.vscode/
+
+# Ignore Fabric / Power BI service metadata (if generated)
+**/*.pbids
+**/*.rdl.data
+**/*.rdl.cache
+
+# Ignore temporary files
+*.tmp
+*.temp
+*.log
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore Python virtual environments (if you use Python for semantic link)
+venv/
+.env/
+__pycache__/
+
+# Ignore node_modules (if you ever use TE3 scripts or automation)
+node_modules/

@@ -1,0 +1,51 @@
+table DimProducts
+	lineageTag: e04db11c-3f1f-47ea-a780-4c928408d1c2
+
+	column ProductID
+		dataType: string
+		lineageTag: 07fd3d16-8c8f-4387-b9ba-f234c64e25eb
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductName
+		dataType: string
+		lineageTag: 7307e8c2-2c8e-4206-8619-71c38d406ae8
+		summarizeBy: none
+		sourceColumn: ProductName
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductClass
+		dataType: string
+		lineageTag: ca76c77f-62d2-4aef-b8ef-24704e7653b6
+		summarizeBy: none
+		sourceColumn: ProductClass
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductPrice
+		dataType: int64
+		formatString: 0
+		lineageTag: 596c714c-9794-42a3-8bb8-03995a45b260
+		summarizeBy: sum
+		sourceColumn: ProductPrice
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimProducts = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\olayi\Desktop\Data\Power BI\Foresight\Assets-230511-120519\PharmDataset-230517-152700.xlsx"), null, true),
+				    DimProducts_Sheet = Source{[Item="DimProducts",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(DimProducts_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ProductID", type text}, {"ProductName", type text}, {"ProductClass", type text}, {"ProductPrice", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,32 @@
+relationship 8bcc7e27-c795-4566-ae78-227b0601f46b
+	fromColumn: Targets.ProductID
+	toColumn: DimProducts.ProductID
+
+relationship c9809032-b432-44a9-b7b9-809432792adf
+	fromColumn: 'Actual sales'.ProductID
+	toColumn: DimProducts.ProductID
+
+relationship ad4eb01a-1d25-485b-8f12-61c3ba75d2e8
+	fromColumn: 'Actual sales'.'Location ID'
+	toColumn: DimLocation.LocationID
+
+relationship c3a9fdcc-e238-4c5d-adf9-774f2e2939e5
+	fromColumn: 'Actual sales'.SubChannelID
+	toColumn: DimChannels.SubChannelID
+
+relationship badf9fdf-52af-4143-8018-bf8a84690639
+	fromColumn: 'Actual sales'.SalesRepID
+	toColumn: DimEmployees.ID
+
+relationship 939cce41-7ea7-4865-901e-ab9e918ad2e5
+	fromColumn: Targets.SalesRepID
+	toColumn: DimEmployees.ID
+
+relationship d7000ce5-0f53-4047-a480-67a56bdae672
+	fromColumn: 'Actual sales'.MonthYear
+	toColumn: DimDate.Date
+
+relationship 78cc4b70-4e27-43e9-b38c-f6dce4906526
+	fromColumn: Targets.MonthYear
+	toColumn: DimDate.Date
+

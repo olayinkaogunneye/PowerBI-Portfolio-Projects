@@ -1,0 +1,60 @@
+expression DimChannel =
+		let
+		    Source = Excel.Workbook(File.Contents("C:\Users\olayi\Desktop\Data\Power BI\Foresight\Assets-230511-120519\PharmDataset-230517-152700.xlsx"), null, true),
+		    DimChannel_Sheet = Source{[Item="DimChannel",Kind="Sheet"]}[Data],
+		    #"Promoted Headers" = Table.PromoteHeaders(DimChannel_Sheet, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ChannelID", Int64.Type}, {"Channel", type text}})
+		in
+		    #"Changed Type"
+	lineageTag: ad879361-4e34-47fc-a3be-7bb574d7b4a2
+	queryGroup: ETL
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression DimSubChannel =
+		let
+		    Source = Excel.Workbook(File.Contents("C:\Users\olayi\Desktop\Data\Power BI\Foresight\Assets-230511-120519\PharmDataset-230517-152700.xlsx"), null, true),
+		    DimSubChannel_Sheet = Source{[Item="DimSubChannel",Kind="Sheet"]}[Data],
+		    #"Promoted Headers" = Table.PromoteHeaders(DimSubChannel_Sheet, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"SubChannelID", Int64.Type}, {"ChannelID", Int64.Type}, {"Sub-channel", type text}})
+		in
+		    #"Changed Type"
+	lineageTag: feab24f2-1461-4a6d-a028-8a35a68b0627
+	queryGroup: ETL
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression Sales2022 =
+		let
+		    Source = Excel.Workbook(File.Contents("C:\Users\olayi\Desktop\Data\Power BI\Foresight\Assets-230511-120519\PharmDataset-230517-152700.xlsx"), null, true),
+		    Sales2022_Sheet = Source{[Item="Sales2022",Kind="Sheet"]}[Data],
+		    #"Promoted Headers" = Table.PromoteHeaders(Sales2022_Sheet, [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Sales ID", Int64.Type}, {"MonthYear", type date}, {"SalesRepID", type text}, {"Distributor", type text}, {"Customer Name", type text}, {"Location ID", type text}, {"SubChannelID", Int64.Type}, {"ProductID", type text}, {"Quantity", Int64.Type}})
+		in
+		    #"Changed Type"
+	lineageTag: 35fd70a3-2fac-4fd3-ab7b-5c71d286946f
+	queryGroup: ETL
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression Sales2023-2025 =
+		let
+		    Source = Excel.Workbook(File.Contents("C:\Users\olayi\Desktop\Data\Power BI\Foresight\Assets-230511-120519\PharmDataset-230517-152700.xlsx"), null, true),
+		    #"Sales2023-2025_Sheet" = Source{[Item="Sales2023-2025",Kind="Sheet"]}[Data],
+		    #"Promoted Headers" = Table.PromoteHeaders(#"Sales2023-2025_Sheet", [PromoteAllScalars=true]),
+		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Sales ID", Int64.Type}, {"MonthYear", type date}, {"SalesRepID", type text}, {"Distributor", type text}, {"Customer Name", type text}, {"Location ID", type text}, {"SubChannelID", Int64.Type}, {"ProductID", type text}, {"Quantity", Int64.Type}})
+		in
+		    #"Changed Type"
+	lineageTag: 5644b5c3-61ce-4636-8ecf-e2a1b75b0a71
+	queryGroup: ETL
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

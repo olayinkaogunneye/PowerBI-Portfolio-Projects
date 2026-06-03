@@ -1,0 +1,54 @@
+table DimLocation
+	lineageTag: 99338b29-f6fb-4084-b0c9-1525054961e1
+
+	column LocationID
+		dataType: string
+		lineageTag: 8393dd55-8c0d-4d5a-a707-88b6a84168e0
+		summarizeBy: none
+		sourceColumn: LocationID
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: c05b25ef-cce4-400d-ae77-0aa36c5e35e5
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column Latitude
+		dataType: double
+		lineageTag: 9c26997e-1a7d-4a18-b170-11a2169d5272
+		summarizeBy: none
+		sourceColumn: Latitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Longitude
+		dataType: double
+		lineageTag: 60a7f324-dff9-4dd3-8dbc-d0f66afe00d8
+		summarizeBy: none
+		sourceColumn: Longitude
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition DimLocation = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\olayi\Desktop\Data\Power BI\Foresight\Assets-230511-120519\PharmDataset-230517-152700.xlsx"), null, true),
+				    DimLocation_Sheet = Source{[Item="DimLocation",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(DimLocation_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"LocationID", type text}, {"City", type text}, {"Latitude", type number}, {"Longitude", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

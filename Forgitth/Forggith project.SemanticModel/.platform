@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Forggith project"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "57ec988d-a26e-4983-ac78-18dc11bf0fc6"
+  }
+}

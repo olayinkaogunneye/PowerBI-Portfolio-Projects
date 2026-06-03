@@ -1,0 +1,96 @@
+table _Measures
+	lineageTag: 536af9cf-54fa-441e-aceb-ddd453c6b4c1
+
+	measure 'Actual Revenue' = SUMX('Actual sales', 'Actual sales'[Quantity]* RELATED(DimProducts[ProductPrice]))
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 632f671f-357d-4797-b763-7db3ee68488c
+
+	measure 'Target Revenue' = SUMX('Targets', 'Targets'[TargetQty]* RELATED(DimProducts[ProductPrice]))
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: f9499500-e28d-4b57-b5b8-234f84adab52
+
+	measure 'Total Revenue' = [Actual Revenue] + [Target Revenue]
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 1362d087-b7ad-49d0-9f4b-f1e2610ee943
+
+	measure 'Total Revenue SPLY' = CALCULATE([Total Revenue], SAMEPERIODLASTYEAR(DimDate[Date]))
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: d46b05df-bc14-4a87-b60a-c6425e2e8792
+
+	measure 'Actual Quantity' = SUM('Actual sales'[Quantity])
+		formatString: 0
+		lineageTag: f50450e9-f3e1-4f6a-b370-5d8cc9020b90
+
+	measure 'Target Quantity' = SUM(Targets[TargetQty])
+		formatString: 0
+		lineageTag: 0a5af135-4c93-4082-b7af-156e432f7c2f
+
+	measure 'Total Transactions' = COUNT('Actual sales'[Sales ID])
+		formatString: 0
+		lineageTag: ac9a4c8f-16aa-4932-a7fb-1e9c4cfd1fd6
+
+	measure 'Total Revenue YTD' = TOTALYTD([Total Revenue], DimDate[Date])
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 68414954-ef24-45f8-a0c2-3793f169058a
+
+	measure 'Actual Revenue YTD' = TOTALYTD([Actual Revenue],DimDate[Date])
+		formatString: \$#,0;(\$#,0);\$#,0
+		lineageTag: 3d5dbd62-3a0f-4966-956c-72f01912905c
+
+	measure 'Target Revenue YTD' = TOTALYTD([Target Revenue],DimDate[Date])
+		formatString: 0
+		lineageTag: e2d103cc-b41e-4656-8ef2-caacd7bf1984
+
+	measure 'Previous month revenue' = CALCULATE([Actual Revenue], PREVIOUSMONTH(DimDate[Date]))
+		formatString: 0
+		lineageTag: f8efd083-3e3b-4756-a677-21b9058a1b3a
+
+	measure '% Actual Revenue Change' = DIVIDE([Actual Revenue], [Previous month revenue], blank())-0
+		lineageTag: 969f4d6e-18fc-40de-8e8c-f593f7ff124c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Actual Revenue Previous Year' = CALCULATE([Actual Revenue], PREVIOUSYEAR(DimDate[Date]))
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 8f64df3d-804f-488c-bf5c-5326a7b3d269
+
+	measure 'Target Revenue previous year' = CALCULATE([Target Revenue], PREVIOUSYEAR(DimDate[Date]))
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 2d4fa108-40c2-4eb1-ad61-6ce1f0a6b0fe
+
+	measure '% Revenue Achievement' =
+			VAR Revenueachievement =
+			                        [Actual Revenue] - [Target Revenue]
+			RETURN
+			            DIVIDE(Revenueachievement, [Target Revenue])*100
+		lineageTag: 71b93873-96b5-4e5f-96f9-cf7a4fa57702
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '% Volume Achievement' = ```
+			VAR volumeachievement = 
+			                        [Actual Quantity] - [Target Quantity]
+			RETURN
+			        DIVIDE(volumeachievement, [Target Quantity])*100
+			```
+		lineageTag: 7197dfbe-e59f-4210-b7bb-176b73a9c4f9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Column
+		formatString: 0
+		lineageTag: 8b91ede3-5965-4393-ae1b-049a20bbd1dd
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Column]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = calculated
+		mode: import
+		source = Row("Column", BLANK())
+
+	annotation PBI_Id = 6969306a5b7f41c48089dadf456e695c
+
+	annotation 436ba87b-9c83-4389-a31b-ebd06a36be98 = {"Expression":""}
+

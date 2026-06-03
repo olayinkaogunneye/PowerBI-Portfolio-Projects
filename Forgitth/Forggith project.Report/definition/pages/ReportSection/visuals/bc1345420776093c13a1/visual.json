@@ -1,0 +1,188 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "bc1345420776093c13a1",
+  "position": {
+    "x": 36.53846153846154,
+    "y": 1015.3846153846154,
+    "z": 16000,
+    "height": 142.30769230769229,
+    "width": 1063.4615384615383,
+    "tabOrder": 16000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Feb",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " had the highest actual revenue month to month change, and was infinity greater than"
+                  },
+                  {
+                    "value": " Jan ",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": "which had the lowest."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Across all 12 months, the actual revenue change by month had"
+                  },
+                  {
+                    "value": " 6.0",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " as its highest and 0.00 as its lowest."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "At $11,118,109,069 Actual revenue surpassed Target revenue $8,453,326,524 with the month of "
+                  },
+                  {
+                    "value": "August",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " accounting for "
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "10.07%, of the actual revenue."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Butzbach cit",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": "y had the highest actual revenue and accounted for 84% of the actual revenue."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "while the"
+                  },
+                  {
+                    "value": " Analgesics",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": " product class accounted for 20.21% of the actual revenue, the "
+                  },
+                  {
+                    "value": "Antiseptics ",
+                    "textStyle": {
+                      "fontWeight": "bold"
+                    }
+                  },
+                  {
+                    "value": "class "
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "accounted for 20.46% of total transactions, the highest amongst the class."
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

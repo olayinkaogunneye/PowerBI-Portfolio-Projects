@@ -1,0 +1,58 @@
+table Targets
+	lineageTag: d1f30aea-b61b-4434-9150-8d2042fd3653
+
+	column ProductID
+		dataType: string
+		lineageTag: 76969c9f-125e-4e30-b760-4b2e3a841590
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesRepID
+		dataType: string
+		lineageTag: 6a51208b-670e-486c-9a4e-8c317ef83b2f
+		summarizeBy: none
+		sourceColumn: SalesRepID
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthYear
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f0c45b96-ce3a-42df-a77e-208720d48846
+		summarizeBy: none
+		sourceColumn: MonthYear
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column TargetQty
+		dataType: int64
+		formatString: 0
+		lineageTag: bc578299-f04d-442e-8d6f-7ed76bcce9a8
+		summarizeBy: sum
+		sourceColumn: TargetQty
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Targets = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\olayi\Desktop\Data\Power BI\Foresight\Assets-230511-120519\PharmTargets-230519-175734.xlsx"), null, true),
+				    Targets_Sheet = Source{[Item="Targets",Kind="Sheet"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Targets_Sheet,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", Int64.Type}, {"Column5", Int64.Type}, {"Column6", Int64.Type}, {"Column7", Int64.Type}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"ProductID", type text}, {"SalesRepID", type text}, {"Month", type text}, {"2022", Int64.Type}, {"2023", Int64.Type}, {"2024", Int64.Type}, {"2025", Int64.Type}}),
+				    #"Unpivoted Other Columns" = Table.UnpivotOtherColumns(#"Changed Type1", {"ProductID", "SalesRepID", "Month"}, "Attribute", "TargetQty"),
+				    #"Merged Columns" = Table.CombineColumns(#"Unpivoted Other Columns",{"Month", "Attribute"},Combiner.CombineTextByDelimiter("", QuoteStyle.None),"MonthYear"),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Merged Columns",{{"MonthYear", type date}})
+				in
+				    #"Changed Type2"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

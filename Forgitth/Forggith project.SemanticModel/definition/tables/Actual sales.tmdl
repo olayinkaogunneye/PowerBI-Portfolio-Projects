@@ -1,0 +1,91 @@
+table 'Actual sales'
+	lineageTag: 21edb5a3-c96b-423d-8ab2-bcf3c1ab3f71
+
+	column 'Sales ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: f75175e0-8ce1-4843-91d1-ac37c8e5ce20
+		summarizeBy: count
+		sourceColumn: Sales ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthYear
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7fa77ba7-c3d6-4066-8dba-d3d5592af7f0
+		summarizeBy: none
+		sourceColumn: MonthYear
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column SalesRepID
+		dataType: string
+		lineageTag: cd1952bb-16f3-4676-a58f-780142ef4eb8
+		summarizeBy: none
+		sourceColumn: SalesRepID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Distributor
+		dataType: string
+		lineageTag: 62edf223-6a00-4ffa-a04a-248ddcdd0dc5
+		summarizeBy: none
+		sourceColumn: Distributor
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Name'
+		dataType: string
+		lineageTag: e095fa8c-c645-4924-8355-ab92605ee261
+		summarizeBy: none
+		sourceColumn: Customer Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Location ID'
+		dataType: string
+		lineageTag: 4ddce4c8-d774-4619-b5d1-87d1d85c4c1b
+		summarizeBy: none
+		sourceColumn: Location ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SubChannelID
+		dataType: int64
+		formatString: 0
+		lineageTag: e9f0050e-0470-42fb-8fb9-ae77a1055051
+		summarizeBy: none
+		sourceColumn: SubChannelID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductID
+		dataType: string
+		lineageTag: f9578b21-7b50-460e-a9c2-2d3b40532563
+		summarizeBy: none
+		sourceColumn: ProductID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 291ce714-7328-485c-9269-cec394f829bb
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Actual sales' = m
+		mode: import
+		source =
+				let
+				    Source = Table.Combine({Sales2022, #"Sales2023-2025"})
+				in
+				    Source
+
+	annotation PBI_ResultType = Table
+

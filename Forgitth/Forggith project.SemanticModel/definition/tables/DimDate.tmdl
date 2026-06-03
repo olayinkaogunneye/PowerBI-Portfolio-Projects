@@ -1,0 +1,64 @@
+table DimDate
+	lineageTag: d15bd952-48e6-400f-90ae-4aa8234cfaf8
+	dataCategory: Time
+
+	column 'Month No'
+		formatString: 0
+		lineageTag: 1ada3db4-efff-4911-97a8-3057a61c6131
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Month No]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		lineageTag: f25b01b8-61f7-4c60-955d-011bd0fbd305
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Month]
+		sortByColumn: 'Month No'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		formatString: 0
+		lineageTag: d1b28973-6798-4989-8a18-111dce712aec
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		isKey
+		formatString: General Date
+		lineageTag: 62e3342f-6b1d-45d4-af00-ba1aed7bfcb2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		formatString: 0
+		lineageTag: b2181248-9708-438c-8803-9b09c8939264
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimDate = calculated
+		mode: import
+		source =
+				DISTINCT(
+				    ADDCOLUMNS(
+				        CALENDARAUTO(),
+				        "Month No", MONTH([Date]),
+				        "Month", FORMAT([Date],"mmm"),
+				        "Quarter", QUARTER([Date]),
+				        "Year", YEAR([Date])
+				    ))
+
+	annotation PBI_Id = 3472352f57ba40e493caf75ba89157ed
+
