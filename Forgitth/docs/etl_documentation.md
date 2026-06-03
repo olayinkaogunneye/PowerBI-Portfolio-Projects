@@ -38,7 +38,9 @@ All tables are imported using:
 ```m
 Excel.Workbook(File.Contents("…PharmDataset-230517-152700.xlsx"), null, true)
 
-Each sheet is accessed via:n`Source{[Item="SheetName", Kind="Sheet"]}[Data]`
+```
+
+Each sheet is accessed via:n Source{[Item="SheetName", Kind="Sheet"]}[Data]
 
 ### Extracted Table
 
@@ -77,11 +79,11 @@ Table.PromoteHeaders(Source, [PromoteAllScalars = true])
 
 This ensures:
 
-DAX time intelligence works
+- DAX time intelligence works
 
-Numeric aggregations behave correctly
+- Numeric aggregations behave correctly
 
-Relationships are valid
+- Relationships are valid
 
 ---
 
@@ -107,184 +109,232 @@ Relationships are valid
 
 **Columns:**
 
-SubChannelID
+- SubChannelID
 
-ChannelID
+- ChannelID
 
-SubChannel
+- SubChannel
 
 **Transformations:**
 
-Promote headers
+- Promote headers
 
-Convert IDs → whole number
+- Convert IDs → whole number
 
-Standardize sub‑channel names
+- Standardize sub‑channel names
 
-4.3 DimProducts
-Columns:
+#### 4.3 DimProducts
 
-ProductID
+**Columns:**
 
-ProductName
+- ProductID
 
-ProductClass
+- ProductName
 
-ProductPrice
+- ProductClass
 
-Transformations:
+- ProductPrice
 
-Clean product names
+**Transformations:**
 
-Ensure ProductPrice is numeric
+- Clean product names
 
-Validate ProductClass categories
+- Ensure ProductPrice is numeric
 
-4.4 DimEmployees
-Columns:
+- Validate ProductClass categories
 
-ID
+#### 4.4 DimEmployees
 
-Name
+**Columns:**
 
-Manager
+- ID
 
-Team
+- Name
 
-Transformations:
+- Manager
 
-Trim and clean text
+- Team
 
-Validate team names (Alfa, Bravo, Charlie, Delta)
+- Transformations:
 
-4.5 DimLocation
-Columns:
+- Trim and clean text
 
-LocationID
+- Validate team names (Alfa, Bravo, Charlie, Delta)
 
-City
+#### 4.5 DimLocation
 
-Latitude
+**Columns:**
 
-Longitude
+- LocationID
 
-Transformations:
+- City
 
-Validate coordinates
+- Latitude
 
-Standardize city names
+- Longitude
 
-4.6 DimDate
+- Transformations:
+
+- Validate coordinates
+
+- Standardize city names
+
+#### 4.6 DimDate
+
 Generated using a Date Table Template:
 
-Columns:
+**Columns:**
 
-Date
+- Date
 
-Year
+- Year
 
-Month
+- Month
 
-Quarter
+- Quarter
 
-MonthName
+- MonthName
 
-YearMonth
+- YearMonth
 
 Supports all time intelligence measures.
 
-5. Fact Table Transformations
-5.1 Actual sales (Sales2022 + Sales2023‑2025)
-Columns:
+---
 
-Sales ID
+### 5. Fact Table Transformations
 
-MonthYear
+#### 5.1 Actual sales (Sales2022 + Sales2023‑2025)
 
-SalesRepID
+**Columns:**
 
-Distributor
+- Sales ID
 
-Customer Name
+- MonthYear
 
-LocationID
+- SalesRepID
 
-SubChannelID
+- Distributor
 
-ProductID
+- Customer Name
 
-Quantity
+- LocationID
 
-Transformations:
+- SubChannelID
 
-Promote headers
+- ProductID
 
-Convert MonthYear → date
+- Quantity
 
-Convert Quantity → whole number
+**Transformations:**
 
-Validate foreign keys
+- Promote headers
 
-Remove blank rows
+- Convert MonthYear → date
 
-5.2 Combine Sales Tables
-m
+- Convert Quantity → whole number
+
+- Validate foreign keys
+
+- Remove blank rows
+
+#### 5.2 Combine Sales Tables
+`m
 FactSales = Table.Combine({Sales2022, Sales2023_2025})
 This creates a unified fact table for all years.
+`
+---
 
-6. Targets Table Transformations
-Columns:
+### 6. Targets Table Transformations
 
-TargetQty
+**Columns:**
 
-ProductID
+- TargetQty
 
-SalesRepID
+- ProductID
 
-MonthYear
+- SalesRepID
 
-Transformations:
+- MonthYear
 
-Promote headers
+**Transformations:**
 
-Convert TargetQty → whole number
+- Promote headers
 
-Convert MonthYear → date
+- Convert TargetQty → whole number
 
-Validate ProductID and SalesRepID
+- Convert MonthYear → date
 
-7. Data Quality Checks
-7.1 Key Integrity
-No missing ProductID
+- Validate ProductID and SalesRepID
 
-No missing LocationID
+---
 
-No missing SubChannelID
+### 7. Data Quality Checks
 
-No missing SalesRepID
+#### 7.1 Key Integrity
+
+- No missing ProductID
+
+- No missing LocationID
+
+- No missing SubChannelID
+
+- No missing SalesRepID
 
 All ProductID and SalesRepID in Targets must exist in DimProducts and DimEmployees
 
-7.2 Date Validation
-All MonthYear values must be valid dates
+#### 7.2 Date Validation
 
-All dates must fall within 2022–2025
+- All MonthYear values must be valid dates
 
-7.3 Duplicate Detection
-Sales ID must be unique
+- All dates must fall within 2022–2025
 
-7.4 Price Validation
-ProductPrice must be > 0
+#### 7.3 Duplicate Detection
 
-8. Load Phase
-After transformation:
+- Sales ID must be unique
 
-All dimension tables are loaded into the semantic model
+#### 7.4 Price Validation
 
-FactSales is loaded as the central fact table
+- ProductPrice must be > 0
 
-Targets is loaded as a target fact/dimension
+---
 
-Relationships are created in Model View
+### 8. Load Phase
 
-DAX measures are defined in the _Measures table
+**After transformation:**
+
+- All dimension tables are loaded into the semantic model
+
+- FactSales is loaded as the central fact table
+
+- Targets is loaded as a target fact/dimension
+
+- Relationships are created in Model View
+
+- DAX measures are defined in the _Measures table
+
+---
+
+### 9. ETL Summary Table
+
+| Table          | Source   | Key Steps                                   | Output            |
+|----------------|----------|----------------------------------------------|-------------------|
+| DimChannels    | Excel    | Promote headers, type enforcement            | Clean dimension   |
+| DimSubChannel  | Excel    | Standardize names                            | Clean dimension   |
+| DimProducts    | Excel    | Clean names, enforce price types             | Clean dimension   |
+| DimEmployees   | Excel    | Clean text, validate teams                   | Clean dimension   |
+| DimLocation    | Excel    | Validate coordinates, standardize cities     | Clean dimension   |
+| Sales2022      | Excel    | Promote headers, type enforcement            | Fact part 1       |
+| Sales2023‑2025 | Excel    | Promote headers, type enforcement            | Fact part 2       |
+| Targets        | Excel    | Clean target data, enforce key types         | Target table      |
+| FactSales      | Combined | Append tables, validate keys, clean rows     | Final fact table  |
+
+---
+
+### 10. Future Enhancements
+Replace local Excel paths with relative paths for GitHub portability
+
+Move data to Fabric Lakehouse or Dataflow Gen2
+
+Add incremental refresh for FactSales
+
+Add RLS for Sales Reps and Teams
