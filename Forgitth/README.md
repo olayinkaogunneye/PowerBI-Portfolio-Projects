@@ -1,3 +1,5 @@
+# Forggith Pharmaceuticals — Sales & Marketing Performance Dashboard
+
 ![Power BI](https://img.shields.io/badge/Power%20BI-FAE100?style=for-the-badge&logo=powerbi&logoColor=black)
 ![DAX](https://img.shields.io/badge/DAX-blue?style=for-the-badge)
 ![Power Query](https://img.shields.io/badge/Power%20Query-4CAF50?style=for-the-badge&logo=microsoft&logoColor=white)
@@ -5,8 +7,6 @@
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
 
-
-# Forggith Pharmaceuticals — Sales & Marketing Performance Dashboard
 
 Forggith Pharmaceuticals is a Germany‑based pharmaceutical manufacturing company that distributes medical products exclusively through independent distributors.  
 Although Forggith does not sell directly to retailers or end‑users, the company maintains strong relationships with retail outlets through its Sales and Marketing teams.
