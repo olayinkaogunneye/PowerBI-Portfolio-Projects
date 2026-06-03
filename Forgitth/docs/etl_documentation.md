@@ -61,9 +61,10 @@ Each sheet is accessed via:n Source{[Item="SheetName", Kind="Sheet"]}[Data]
 
 #### 3.1 Promote Headers
 
-`m
+```m
 Table.PromoteHeaders(Source, [PromoteAllScalars = true])
-`
+
+```
 
 #### 3.2 Apply Data Types
 
@@ -238,10 +239,12 @@ Supports all time intelligence measures.
 - Remove blank rows
 
 #### 5.2 Combine Sales Tables
-`m
+```m
 FactSales = Table.Combine({Sales2022, Sales2023_2025})
+
+```
 This creates a unified fact table for all years.
-`
+
 ---
 
 ### 6. Targets Table Transformations

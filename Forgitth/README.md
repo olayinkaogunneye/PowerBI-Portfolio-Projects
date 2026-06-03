@@ -169,7 +169,7 @@ Forggith’s official brand colors and logo (from the Assets folder) were applie
 
 You can explore the fully interactive Power BI dashboard using the link below:
 
-👉 **Live Dashboard:** *[https://app.powerbi.com/view?r=eyJrIjoiYWZkNzIzMjEtOGE3YS00ZDAxLWI2MmUtNWJiOTMzNzdlNGM5IiwidCI6IjkyZGJlNjYzLWU0ZDMtNGYwZC05NTdkLWU1MTBhNzE4ZWM3NSJ9]*
+👉 **Live Dashboard:** *[https://app.fabric.microsoft.com/view?r=eyJrIjoiNjlmZmUwMDEtODdhZi00MDYyLTg2MzAtMGEyMmYwNjBkNjA3IiwidCI6ImFjMDZkNWY1LTNiMWYtNGVkNy05NGY4LTRlODUzOGUwYjdlYSJ9]*
 
 If the report requires access permissions, ensure your Power BI account has been granted viewer rights.
 
