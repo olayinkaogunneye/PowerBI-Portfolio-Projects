@@ -1,6 +1,6 @@
 expression DimChannel =
 		let
-		    Source = Excel.Workbook(File.Contents("C:\Users\olayi\Desktop\Data\Power BI\Foresight\Assets-230511-120519\PharmDataset-230517-152700.xlsx"), null, true),
+		    Source = Excel.Workbook(File.Contents("C:\Users\olayi\OneDrive\Desktop\Data\PowerBI-Porfolio-Projects\Forgitth\Data\PharmDataset-230517-152700.xlsx"), null, true),
 		    DimChannel_Sheet = Source{[Item="DimChannel",Kind="Sheet"]}[Data],
 		    #"Promoted Headers" = Table.PromoteHeaders(DimChannel_Sheet, [PromoteAllScalars=true]),
 		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ChannelID", Int64.Type}, {"Channel", type text}})
@@ -15,7 +15,7 @@ expression DimChannel =
 
 expression DimSubChannel =
 		let
-		    Source = Excel.Workbook(File.Contents("C:\Users\olayi\Desktop\Data\Power BI\Foresight\Assets-230511-120519\PharmDataset-230517-152700.xlsx"), null, true),
+		    Source = Excel.Workbook(File.Contents("C:\Users\olayi\OneDrive\Desktop\Data\PowerBI-Porfolio-Projects\Forgitth\Data\PharmDataset-230517-152700.xlsx"), null, true),
 		    DimSubChannel_Sheet = Source{[Item="DimSubChannel",Kind="Sheet"]}[Data],
 		    #"Promoted Headers" = Table.PromoteHeaders(DimSubChannel_Sheet, [PromoteAllScalars=true]),
 		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"SubChannelID", Int64.Type}, {"ChannelID", Int64.Type}, {"Sub-channel", type text}})
@@ -30,7 +30,7 @@ expression DimSubChannel =
 
 expression Sales2022 =
 		let
-		    Source = Excel.Workbook(File.Contents("C:\Users\olayi\Desktop\Data\Power BI\Foresight\Assets-230511-120519\PharmDataset-230517-152700.xlsx"), null, true),
+		    Source = Excel.Workbook(File.Contents("C:\Users\olayi\OneDrive\Desktop\Data\PowerBI-Porfolio-Projects\Forgitth\Data\PharmDataset-230517-152700.xlsx"), null, true),
 		    Sales2022_Sheet = Source{[Item="Sales2022",Kind="Sheet"]}[Data],
 		    #"Promoted Headers" = Table.PromoteHeaders(Sales2022_Sheet, [PromoteAllScalars=true]),
 		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Sales ID", Int64.Type}, {"MonthYear", type date}, {"SalesRepID", type text}, {"Distributor", type text}, {"Customer Name", type text}, {"Location ID", type text}, {"SubChannelID", Int64.Type}, {"ProductID", type text}, {"Quantity", Int64.Type}})
@@ -45,7 +45,7 @@ expression Sales2022 =
 
 expression Sales2023-2025 =
 		let
-		    Source = Excel.Workbook(File.Contents("C:\Users\olayi\Desktop\Data\Power BI\Foresight\Assets-230511-120519\PharmDataset-230517-152700.xlsx"), null, true),
+		    Source = Excel.Workbook(File.Contents("C:\Users\olayi\OneDrive\Desktop\Data\PowerBI-Porfolio-Projects\Forgitth\Data\PharmDataset-230517-152700.xlsx"), null, true),
 		    #"Sales2023-2025_Sheet" = Source{[Item="Sales2023-2025",Kind="Sheet"]}[Data],
 		    #"Promoted Headers" = Table.PromoteHeaders(#"Sales2023-2025_Sheet", [PromoteAllScalars=true]),
 		    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Sales ID", Int64.Type}, {"MonthYear", type date}, {"SalesRepID", type text}, {"Distributor", type text}, {"Customer Name", type text}, {"Location ID", type text}, {"SubChannelID", Int64.Type}, {"ProductID", type text}, {"Quantity", Int64.Type}})

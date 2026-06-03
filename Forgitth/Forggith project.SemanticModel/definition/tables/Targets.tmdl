@@ -41,7 +41,7 @@ table Targets
 		mode: import
 		source =
 				let
-				    Source = Excel.Workbook(File.Contents("C:\Users\olayi\Desktop\Data\Power BI\Foresight\Assets-230511-120519\PharmTargets-230519-175734.xlsx"), null, true),
+				    Source = Excel.Workbook(File.Contents("C:\Users\olayi\OneDrive\Desktop\Data\PowerBI-Porfolio-Projects\Forgitth\Data\PharmTargets-230519-175734.xlsx"), null, true),
 				    Targets_Sheet = Source{[Item="Targets",Kind="Sheet"]}[Data],
 				    #"Changed Type" = Table.TransformColumnTypes(Targets_Sheet,{{"Column1", type text}, {"Column2", type text}, {"Column3", type text}, {"Column4", Int64.Type}, {"Column5", Int64.Type}, {"Column6", Int64.Type}, {"Column7", Int64.Type}}),
 				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
