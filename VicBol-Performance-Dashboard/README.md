@@ -209,6 +209,6 @@ Budget optimization scenarios
 
 Automated data refresh pipeline
 
-Author: Olayinka Ogunneye
+### Author: Olayinka Ogunneye
 
 Role: Analytics Consultant 
