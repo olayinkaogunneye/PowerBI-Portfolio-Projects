@@ -125,6 +125,7 @@ Full insights summary: `/docs/insights_summary.md`
 
 ## 📁 Project Structure
 
+```
 Forggith/
 │
 ├── Forggith project.pbip
@@ -138,7 +139,7 @@ Forggith/
 │   └── insights_summary.md
 │
 └── README.md
-
+```
 
 
 ---
@@ -170,6 +171,8 @@ Forggith’s official brand colors and logo (from the Assets folder) were applie
 You can explore the fully interactive Power BI dashboard using the link below:
 
 👉 **Live Dashboard:** *[https://app.fabric.microsoft.com/view?r=eyJrIjoiNjlmZmUwMDEtODdhZi00MDYyLTg2MzAtMGEyMmYwNjBkNjA3IiwidCI6ImFjMDZkNWY1LTNiMWYtNGVkNy05NGY4LTRlODUzOGUwYjdlYSJ9]*
+
+**medium link:** [https://medium.com/@olayinkaogunneye/building-a-modern-bi-solution-for-forggith-pharmaceuticals-an-end-to-end-power-bi-engineering-case-cd32eec0c94b]
 
 If the report requires access permissions, ensure your Power BI account has been granted viewer rights.
 
