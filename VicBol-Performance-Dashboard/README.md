@@ -153,7 +153,7 @@ Full insights summary:
 
 ### Project Structure
 
-
+```
 VicBol-Performance-Analytics/
 │
 ├── pbix/
@@ -163,7 +163,6 @@ VicBol-Performance-Analytics/
 ├── data/
 │   ├── raw/
 │   ├── processed/
-│   └── lookup/
 │
 ├── docs/
 │   ├── 01_Data_Cleaning_Report.md
@@ -187,38 +186,14 @@ VicBol-Performance-Analytics/
 │   └── theme.json
 │
 └── README.md
-🖥 How to Run the Project Locally
-1. Clone the Repository
-bash
-git clone https://github.com/<your-username>/VicBol-Performance-Analytics.git
-2. Open the PBIX File
-Open the file located in:
 
-Code
-/pbix/VicBol_Performance.pbix
-3. Update Data Source Paths
-In Power BI Desktop:
+```
 
-Home → Transform Data → Data Source Settings
+---
 
-Point all queries to your local /data folder.
+**Live Dashboard:** *[https://app.fabric.microsoft.com/view?r=eyJrIjoiNzQ1OTRmNWYtMDRjNC00ZjI1LThjN2MtMTQyMWEwMTRmNGIzIiwidCI6ImFjMDZkNWY1LTNiMWYtNGVkNy05NGY4LTRlODUzOGUwYjdlYSJ9]*
 
-4. Refresh the Model
-Click Refresh All to load the latest data.
-
-Explore the Dashboard
-
-Use the report pages to explore:
-
-Spend trends
-
-Revenue patterns
-
-Channel performance
-
-Device breakdown
-
-MoM indicators
+---
 
 ### Future Enhancements
 
@@ -234,6 +209,6 @@ Budget optimization scenarios
 
 Automated data refresh pipeline
 
-📞 Contact
 Author: Olayinka Ogunneye
-Role: Analytics Consultant / Data Engineer
+
+Role: Analytics Consultant 
