@@ -1,7 +1,7 @@
 # 05_KPI_Definitions
 
 **Prepared by:** Olayinka Ogunneye  
-**Project:** FAVI Performance Analytics Case Study  
+**Project:** VicBol Performance Analytics Case Study  
 **Scope:** KPI Definitions & Business Logic  
 
 ---
